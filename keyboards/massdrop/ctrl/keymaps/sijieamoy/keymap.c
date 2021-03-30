@@ -101,8 +101,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 #define DISTANCE_NORAMLIZING_PARAMETER 3
-static const int DEFAULT_PATTERN_INDEX = 2;
+static const int DEFAULT_PATTERN_INDEX = 2; // Turn off wave by default
 static const int DEFAULT_WAVE_SPEED = 20;
+static const int DEFAULT_WAVE_WIDTH = 0; // Turn off wave by default
 struct {
     uint8_t PATTERN_INDEX;
     float WAVE_WIDTH;
@@ -111,7 +112,7 @@ struct {
     float TRAVEL_DISTANCE;
 } USER_CONFIG = {
     .PATTERN_INDEX = DEFAULT_PATTERN_INDEX,
-    .WAVE_WIDTH = 10, // width of the wave in keycaps
+    .WAVE_WIDTH = DEFAULT_WAVE_WIDTH, // width of the wave in keycaps
     .WAVE_SPEED = DEFAULT_WAVE_SPEED, // travel how many keycaps per second
     .COLOR_PATTERN_INDEX = 0,
     .TRAVEL_DISTANCE = 25,
@@ -565,7 +566,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             // reset all parameters
 
             USER_CONFIG.PATTERN_INDEX = DEFAULT_PATTERN_INDEX;
-            USER_CONFIG.WAVE_WIDTH = 10;
+            USER_CONFIG.WAVE_WIDTH = DEFAULT_WAVE_WIDTH;
             USER_CONFIG.WAVE_SPEED = DEFAULT_WAVE_SPEED;
             USER_CONFIG.COLOR_PATTERN_INDEX = 0;
             USER_CONFIG.TRAVEL_DISTANCE = 25;
